@@ -456,7 +456,7 @@ OS 環境変数 Pathがインストールしたpythonのパスを通していな
 
 #### 12-5-3. ダウンロード解凍フォルダ：```④lr1110_driver-Branch_v3.0.0_kai```
 
-`lr1110_driver-6.0.0`
+`lr1110_driver-Branch_v3.0.0_kai`
 
 上記フォルダを```ZeroCarbonProject```フォルダにコピー、下記のフォルダ名に変更する	
 
