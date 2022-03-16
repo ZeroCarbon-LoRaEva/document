@@ -467,7 +467,7 @@ OS 環境変数 Pathがインストールしたpythonのパスを通していな
 
 - ダウンロード解凍フォルダ：```①ZeroCarbonProjectPatch-main```
 - 適用先フォルダ：```ZeroCarbonProject```
-- patch情報ファイル：```0001-FileAndFolder-delete.patch``` / ```0002-ZeroCarbon-Custom.patch```
+- patch情報ファイル： ```0001-FileAndFolder-delete.patch``` / ```0002-ZeroCarbon-Custom.patch```
 
 1. patch情報ファイルを`ZeroCarbonProject`フォルダと同列にコピーする
 2. コマンドプロンプトを立ち上げ、`cd`コマンドで`ZeroCarbonProject`フォルダと同じフォルダへ移動する
