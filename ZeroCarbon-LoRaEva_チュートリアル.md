@@ -89,10 +89,10 @@
    
 バイナリーファイル(*.bin)とヘッダーファイル(*.h)がセットの為、両方ダウンロードします。
 
-   - lr1110_transceiver_0306.bin
-   - lr1110_transceiver_0306.h
+   - lr1110_transceiver_0307.bin
+   - lr1110_transceiver_0307.h
 
-__※より新しいバージョンのものがあるかもしれませんが、0306 をダウンロードしてください。__
+__※新しいバージョンのものがあるかもしれませんが、0307 をダウンロードしてください。__
 ### 2-3. RE01マイコン ファームウェア更新用アプリ Renesas Flash Programmer をダウンロードする([0-1. Link先](#0-1-link先))
 
    - ```※要ユーザ登録```
@@ -107,24 +107,66 @@ __※より新しいバージョンのものがあるかもしれませんが、
    - https://www.loracloud.com  
    `※評価用としては、無料枠で利用できます`
 
-### 3-2. GLS Tokenを以下 URLの Primary Tokenをコピーし、控えておく
+### 3-2. 所有者を新規作成する
 
-- https://www.loracloud.com/portal/geolocation/token_management
-   ![GLS_Token_1.png](img/GLS_Token_1.png)
-   ![GLS_Token_2.png](img/GLS_Token_2.png)
+- https://www.loracloud.com/portal
+#### 3-2-1 "Modem & Geolocation Services"を押下
+   <img src="img/01_LoRaCloud_portal.png" width="70%">
+
+#### 3-2-2 "DEVICE OWNERS"を押下
+   <img src="img/02_LoRaCloud_ms_home.png" width="70%">
 
 <br>
 
+
 <div style="page-break-before:always"></div>
 
-### 3-3. DAS Tokenを以下 URLで新規作成し、Tokenをコピーし、控えておく
+#### 3-2-3 "CREATE NEW OWNER"にて、所有者を作成
+   <img src="img/03_LoRaCloud_ms_do_list.png" width="70%">
 
-DAS Token は Device Owner を登録することで自動的に生成されます。
+#### 3-2-4 "NAME"欄に所有者を入力し、ボタン押下
+   <img src="img/04_LoRaCloud_ms_do_add.png" width="70%">
 
-- https://www.loracloud.com/portal/device_management/tokens
-   ![DEVICE OWNER作成_1](img/DEVICE_OWNERS_01.png)
-   ![DEVICE OWNER作成_2](img/DEVICE_OWNERS_02.png)
-   ![DAS Token コピー](img/DAS_Token_3.png)
+<br>
+
+
+<div style="page-break-before:always"></div>
+
+#### 3-2-5 所有者が追加
+   <img src="img/05_LoRaCloud_ms_do_list2.png" width="70%">
+
+<br>
+
+
+<div style="page-break-before:always"></div>
+
+### 3-3. Manage Tokenを新規作成し、Manege Tokenを控える
+
+- https://www.loracloud.com/portal/modem_services/tokens
+#### 3-3-1 "MANAGE TOKENS"を押下
+   <img src="img/06_LoRaCloud_ms_do_list3.png" width="70%">
+
+#### 3-3-2 3-2-5で追加した所有者名を選択
+   <img src="img/07_LoRaCloud_ms_tokens.png" width="70%">
+
+<br>
+
+
+<div style="page-break-before:always"></div>
+
+#### 3-3-3 "CREATE NEW TOKEN"にて、TOKENを作成
+   <img src="img/08_LoRaCloud_ms_tokens2.png" width="70%">
+
+#### 3-3-4 "NAME"欄にTOKEN名を入力・権限を設定し、ボタンを押下
+   <img src="img/09_LoRaCloud_ms_tokens_create.png" width="70%">
+
+<br>
+
+
+<div style="page-break-before:always"></div>
+
+#### 3-3-5 MANAGE TOKENが作成されるので、"Copy"ボタンを押してTokenコードをクリップボードにコピーする
+   <img src="img/10_LoRaCloud_ms_tokens3.png" width="70%">
 
 <br>
 
@@ -231,7 +273,7 @@ DAS Token は Device Owner を登録することで自動的に生成されま�
    - "フラッシュ操作"の"スタート"ボタンを押下   
      ```※エラーとなった場合、ボードのResetボタンを押下直後に"スタート"ボタンを押下```
 
-   ![RFP書き込み.png](img/RFP書き込み.png)       
+   <img src="img/RFP書き込み.png" width="70%">
 
 <br>
 
@@ -245,7 +287,7 @@ DAS Token は Device Owner を登録することで自動的に生成されま�
    - ```2-2 LR1110ファームウェア``` の .bin/.hファイル を選択   
    - "Update"ボタンを押下
 
-   ![lr1110updater.png](img/lr1110updater.png)      
+   <img src="img/lr1110updater.png" width="70%">   
 
 <br>
 
@@ -260,7 +302,7 @@ DAS Token は Device Owner を登録することで自動的に生成されま�
    - "フラッシュ操作"の"スタート"ボタンを押下   
    ```※エラーとなった場合、ボードのResetボタンを押下直後に"スタート"ボタンを押下``` 
 
-   ![RFP書き込み.png](img/RFP書き込み.png)    
+   <img src="img/RFP書き込み.png" width="70%">
 
 <br>
 
@@ -288,11 +330,11 @@ DAS Token は Device Owner を登録することで自動的に生成されま�
 ## 10.動かしてみよう   
 ### 10-1. ```4.パソコン側アプリ環境構築``` で設定した LR1110ディレクトリに移動して下記を実行   
 ```   
-> Lr1110Demo -d <COM_PORT> <COORDINATES_ASSISTED_LR1110> <COORDINATES_EXACT> <GLS TOKEN> <DAS TOKEN>
+> Lr1110Demo -d <COM_PORT> <COORDINATES_ASSISTED_LR1110> <COORDINATES_EXACT> <MANAGE TOKEN>
 ```   
 (コマンド例)   
 ```
-> Lr1110Demo -d COM4 34.70210993807373,135.4958717974474,1 34.64588733864984,135.51443499143957,17 Ayyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy Ayyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+> Lr1110Demo -d COM4 34.70210993807373,135.4958717974474,1 34.64588733864984,135.51443499143957,17 Ayyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
 ```
    - ```<COM_PORT>```   
       RX用ボードが接続されているPCのポート番号   
@@ -304,19 +346,20 @@ DAS Token は Device Owner を登録することで自動的に生成されま�
    - ```<COORDINATES_EXACT>```   
       RX用ボードから数10km離れた場所の 緯度・経度・高度を指定  
       指定方法は `COORDINATES_ASSISTED_LR1110` と同様
-   - ```<GLS TOKEN>```   
-      ``` 3.2 GLS Token``` で取得したモノを使用    
-   - ```<DAS TOKEN>```   
-      ```3.3 DAS Token``` で取得したモノを使用    
+   - ```<MANAGE TOKEN>```   
+      ``` 3-3-5``` で取得した MANAGE TOKENを使用    
 
 (実行例)   
 ```
-> Lr1110Demo -d COM4 34.70210993807373,135.4958717974474,1 34.64588733864984,135.51443499143957,17 Ayyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy Ayyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+> Lr1110Demo -d COM4 34.70210993807373,135.4958717974474,1 34.64588733864984,135.51443499143957,17 Ayyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
 GNSS Demo Start
-1 .. Start without Almanac
+Command (1 .. Start without Almanac, 2 .. Download Almanac, 3 .. End Program) :1
 Test Host handler
 Reply3 b'demooglog\r\x00'
 ```   
+※```"Command (1 .. Start without Almanac, 2 .. Download Almanac, 3 .. End Program) :"```は
+"1 .. Start without Almanac"の"1"を選択する
+
 
 <br>
 
@@ -328,18 +371,30 @@ Reply3 b'demooglog\r\x00'
    TX用ボード、RX用ボード(パソコン)、LoRaクラウドでやり取りをおこない、位置推定を算出する   
    (通信時間は約30秒)   
 
-(例）実行後、以下のログが表示される
+(例）実行後、以下のログ例が表示される
+   - Wifi APによる緯度経度算出時
 ```   
-
-DATE :  2022-01-08 13:02:50.275376
-gTemp    =  23.55
-gHumi    =  39.37
+DATE :  2022-mm-dd 11:52:08.589493
+gTemp    =  26.19
+gHumi    =  61.67
 gLati    =  34.690048
 gLong    =  135.533182
-gEdgerssi=  -9.0
-gGwrssi  =  -10.0
-gWifi    =  4
-
+gEdgerssi=  -29.0
+gGwrssi  =  -31.0
+gWifi    =  6
+gGnss    =  0
+```
+・GNSSによる緯度経度算出時
+```   
+DATE :  2022-mm-dd 13:46:26.000950
+gTemp    =  26.72
+gHumi    =  60.83
+gLati    =  34.69021
+gLong    =  135.5343
+gEdgerssi=  -99.0
+gGwrssi  =  -102.0
+gWifi    =  0
+gGnss    =  18
 ```
    - gLati とgLong の部分が緯度経度となる   
    - "34.690048" と "135.533182" を "34.690048,135.533182" の様にカンマで区切り、[Googleマップ](https://www.google.co.jp/maps)の左上の"Google マップを検索する"欄に入力し、Enterにて取得した緯度経度が表示されます   
@@ -356,7 +411,7 @@ OS 環境変数 Pathがインストールしたpythonのパスを通していな
    C:\Users\xxxxxxx\AppData\Local\Programs\Python\Python39\
    ※Python3.9系 の場合
 
-   ![環境変数.png](img/環境変数.png)    
+   <img src="img/環境変数.png" width="70%">    
 
 <br>
 
@@ -424,6 +479,7 @@ OS 環境変数 Pathがインストールしたpythonのパスを通していな
    > patch --directory=ZeroCarbonProject -p1 --verbose --remove-empty-files < 0002-ZeroCarbon-Custom.patch
    ```
    ※Windows にはデフォルトでは `patch` コマンドがないため [14. patch コマンドについて](#14-patch-コマンドについて)を参照して用意してください。
+   ※この patch コマンドは Windows の制約により、管理者権限でのコマンドプロンプト上でなければ実行できません。
 
 <br>
 
@@ -488,37 +544,29 @@ Renesasサイトよりダウンロードし、インストールする
 - ```ログ/使用状況データ収集```は```キャンセル```ボタン押下
 - ```Renesas Welcome to e2studio```は```ようこそ```横の```x```を押下
 
-<br>
-
-<div style="page-break-before:always"></div>
-
 - プロジェクト・エクスプローラー内の```プロジェクトをインポート```を選択
 
-   ![プロジェクトをインポート.png](img/プロジェクトをインポート.png)
+   <img src="img/プロジェクトをインポート.png" width="65%">
 
 <div style="page-break-before:always"></div>
 
 - ```一般```の```既存プロジェクトをワークスペースへ```を選択し、```次へ```押下
 
-   ![インポート.png](img/インポート.png)
-
-<div style="page-break-before:always"></div>
+   <img src="img/インポート.png" width="65%">
 
 - ```ルート・ディレクトリの選択(T)```の```参照```ボタン押下し、```12-5.章```迄で作成したプロジェクトフォルダを指定し、```終了```ボタン押下
 
-   ![インポート完了.png](img/インポート完了.png)
+   <img src="img/インポート完了.png" width="55%">
 
 <div style="page-break-before:always"></div>
 
 - プロジェクト・エクスプローラー内の```LR1110_GNSS_256KB_Transceiver```を右クリックで```プロジェクトのビルド(B)```を選択
 
-   ![build.png](img/Build.png)
-
-<div style="page-break-before:always"></div>
+   <img src="img/Build.png" width="65%">
 
 - ウィンドウ右下タグ内の```コンソール```に```Build Finished 0 error, 0 warnings```が表示されればビルド成功
 
-   ![build完了.png](img/Build完了.png)
+   <img src="img/Build完了.png" width="65%">
 
 - ```.hex```ファイルは以下フォルダに生成される
 ```ZeroCarbonProject\HardwareDebug\LR1110_GNSS_256KB_Transceiver.hex```
@@ -553,41 +601,33 @@ Renesasサイトよりダウンロードし、インストールする
 2. ZeroCarbon LoRaⓇ Evaluation Board をUSBケーブルでPCに接続する
 3. Renesas Flash Programmer の起動
 
-   ![Flash Programmer 起動](img/FlashProgrammer_init_01.png)
-
-<br>
-
-<div style="page-break-before:always"></div>
+   <img src="img/FlashProgrammer_init_01.png" width="60%">
 
 4. 新しいプロジェクトの作成
 
-   ![新しいプロジェクトの作成](img/FlashProgrammer_init_02.png)
-
-5. プロジェクトの設定
-
-   ![プロジェクトの設定](img/FlashProgrammer_init_03.png)
-
-<br>
+   <img src="img/FlashProgrammer_init_02.png" width="60%">
 
 <div style="page-break-before:always"></div>
 
+5. プロジェクトの設定
+
+   <img src="img/FlashProgrammer_init_03.png" width="65%">
+
 6. ポート選択
 
-   ![ポート選択](img/FlashProgrammer_init_04.png)
+   <img src="img/FlashProgrammer_init_04.png" width="65%">
+
+<div style="page-break-before:always"></div>
 
 7. 接続
 
    ZeroCarbon LoRaⓇ Evaluation Board のリセットSWを押下して、直後に[接続]ボタンを押下する。
 
-   ![接続](img/FlashProgrammer_init_05.png)
-
-<br>
-
-<div style="page-break-before:always"></div>
+   <img src="img/FlashProgrammer_init_05.png" width="65%">
 
 8. 接続結果確認
 
-   ![接続結果確認](img/FlashProgrammer_init_06.png)
+   <img src="img/FlashProgrammer_init_06.png" width="60%">
 
 <div style="page-break-before:always"></div>
 
@@ -603,7 +643,7 @@ Windows 用 patch コマンドは次のWEBサイトなどから取得するこ�
 
    ダウンロードした zip ファイルを任意のフォルダに解凍してください。
 
-   **この patch コマンドは Windows の制約により、管理者として実行したコマンドプロンプト上でなければ実行できません。**
+   **この patch コマンドは Windows の制約により、管理者権限でのコマンドプロンプト上でなければ実行できません。**
 
 patch コマンドを実行する際は次のコマンドを実行して patch.exe のパスを登録しておく必要があります。
 
