@@ -8,6 +8,8 @@
 ## WifiスキャンとGNSS受信で独自屋内外トラッキング(LoRaクラウド※1)機能により、位置(緯度経度)を推定。また、センサ(SPI/I2C/※2)を追加する事でセンサデータを追加で取得可能。 <!-- omit in toc -->
 
 **※1:利用手順・動作について、メーカ(SEMTECH)推奨とは異なる場合が有ります**
+**(2022年3月18日時点)**
+
 **※2:温湿度センサ(HS3001)は標準搭載**
 
 <br>
@@ -21,10 +23,10 @@
 - [3.アカウント準備](#3アカウント準備)
 - [4.パソコン側アプリ環境構築](#4パソコン側アプリ環境構築)
 - [5.ZeroCarbon LoRaⓇ Evaluation Board ジャンパSW等配置図](#5zerocarbon-lora-evaluation-board-ジャンパsw等配置図)
-- [6.LoRa LR1110 ファームウェア更新(TX用ボード,RX用ボード共通)](#6lora-lr1110-ファームウェア更新tx用ボードrx用ボード共通)
-- [7.Renesas RE01 ファームウェア更新(TX用ボード,RX用ボード共用)](#7renesas-re01-ファームウェア更新tx用ボードrx用ボード共用)
-- [8.蓄電設定(TX用ボードのみ)](#8蓄電設定tx用ボードのみ)
-- [9.RX接続設定(RX用ボードのみ)](#9rx接続設定rx用ボードのみ)
+- [6.LoRa LR1110 ファームウェア更新(ZeroCarbonボードA/B共通)](#6lora-lr1110-ファームウェア更新ZeroCarbonボードA/B共通)
+- [7.Renesas RE01 ファームウェア更新(ZeroCarbonボードA/B共通)](#7renesas-re01-ファームウェア更新ZeroCarbonボードA/B共通)
+- [8.蓄電設定(ZeroCarbonボードA(エッジ用)のみ)](#8蓄電設定ZeroCarbonボードA(エッジ用)のみ)
+- [9.ZeroCarbonボードB(GWアクセス用)接続設定](#9ZeroCarbonボードB(GWアクセス用)接続設定)
 - [10.動かしてみよう](#10動かしてみよう)
 - [11.トラブルシュート](#11トラブルシュート)
 - [12.開発環境構築](#12開発環境構築)
@@ -37,6 +39,11 @@
 ## 0.システム構成
 
 ![システム構成＆動作フロー.png](img/システム構成＆動作フロー.png)
+
+##### 0-1. フローチャート  
+ココでは、以下のフローチャートでコード動作を簡易的に説明します。
+
+![簡易フローチャート.png](img/簡易フローチャート.png)
 
 <br>
 
@@ -60,9 +67,9 @@
 
 ## 1.機材準備(ハード)
 
-##### 1. ZeroCarbon LoRaⓇ Evaluation Board x 2(TX・RX用 各1枚)
-##### 2. USB Type-A to microBケーブル x 2(TX[充電用]・RX[PC接続用])
-##### 3. パソコン(アプリ動作[LoRaクラウド接続])
+##### 1. ZeroCarbon LoRaⓇ Evaluation Board x 2(ZeroCarbonボードA/B 各1枚)
+##### 2. USB Type-A to microBケーブル x 2(ZeroCarbonボードA/B 接続用)
+##### 3. パソコン(アプリ動作 : LoRaクラウド接続)
 ##### 4. インターネット接続環境(LoRaクラウド接続)
 <br>
 
@@ -82,8 +89,8 @@
 ## 2.機材準備(ソフト)
 ### 2-1. RE01マイコン用ファームウェア等をからダウンロードする([0-1. Link先](#0-1-link先))
 
-   1. TX用：ZeroCarbon_TxFW.hex
-   2. RX用：ZeroCarbon_RxFW.hex
+   1. ZeroCarbonボードA(エッジ用)：ZeroCarbon_TxFW.hex
+   2. ZeroCarbonボードB(GWアクセス用)：ZeroCarbon_RxFW.hex
    3. LR1110ファームウェア更新用：ZeroCarbon_lr1110_FWupdate.hex
    4. LR1110ﾌｧｰﾑｳｪｱｱｯﾌﾟﾃﾞｰﾄTool：ZeroCarbon_lr1110_FWUpdater.exe
 ### 2-2. LR1110 ファームウェア Transceiver用をダウンロードする([0-1. Link先](#0-1-link先))
@@ -256,13 +263,13 @@ __※新しいバージョンのものがあるかもしれませんが、0307 �
 ![0d.RFP書き込み(RE01書換)＆給電.png](img/0d.RFP書き込み(RE01書換)＆給電.png)   
 - e.LR1110 FW書き込み(USB通信)＆給電　設定
 ![0e.LR1110 FW書き込み(USB通信)＆給電.png](img/0e.LR111FW書き込み(USB通信)＆給電.png)
-- f.USB通信(RX用)＆給電　設定
-![0f.USB通信(RX用)＆給電.png](img/0f.USB通信(RX用)＆給電.png)   
+- f.USB通信＆給電　設定
+![0f.USB通信＆給電.png](img/0f.USB通信＆給電.png)   
 <br>
 
 <div style="page-break-before:always"></div>
 
-## 6.LoRa LR1110 ファームウェア更新(TX用ボード,RX用ボード共通)
+## 6.LoRa LR1110 ファームウェア更新(ZeroCarbonボードA/B共通)
 
 ※ Renesas Flash Programmer を使用して初めてファームウェア更新を行う場合は [13. Renesas Flash Programmer のプロジェクト作成](#13-renesas-flash-programmer-のプロジェクト作成) を参照して初期設定を行っておく。
 ### 6-1. 先ず、```2-1.3 LR1110ファームウェア更新用``` でRE01マイコンを更新する   
@@ -294,7 +301,7 @@ __※新しいバージョンのものがあるかもしれませんが、0307 �
 
 <div style="page-break-before:always"></div>
 
-## 7.Renesas RE01 ファームウェア更新(TX用ボード,RX用ボード共用)   
+## 7.Renesas RE01 ファームウェア更新(ZeroCarbonボードA/B共通)   
 - JP/SW設定は ```5.d. RFP書き込み(RE01書換)＆給電``` とする   
 - パソコンとボードを USB接続する   
 - ```2-3 RFP(Renesas Flash Programmer)``` を起動し、```2-1.1 TX用 or 2-1.2 RX用``` で更新する   
@@ -309,21 +316,21 @@ __※新しいバージョンのものがあるかもしれませんが、0307 �
 
 <div style="page-break-before:always"></div>
 
-## 8.蓄電設定(TX用ボードのみ)   
+## 8.蓄電設定(ZeroCarbonボードA(エッジ用)のみ)   
 ### 8-1. エネハベ素子蓄電(ソーラーパネルによる二次電池への蓄電)   
-   - TX用ボードにソーラーパネルを接続(+,-端子を間違わないように)   
+   - ZeroCarbonボードA(エッジ用)にソーラーパネルを接続(+,-端子を間違わないように)   
    - JP/SW設定は ```5.a. エネハベ素子蓄電``` とする   
    ```※二次電池への蓄電には時間が掛かります```    
    
 ### 8-2. USB経由高速蓄電(USB給電による二次電池への蓄電)   
    - JP/SW設定は ```5.b. USB経由高速蓄電``` とする   
-   - TX用ボードにPC接続済みUSBを接続   
+   - ZeroCarbonボードA(エッジ用)にPC接続済みUSBを接続   
 <br>
 
-## 9.RX接続設定(RX用ボードのみ)   
+## 9.ZeroCarbonボードB(GWアクセス用)接続設定   
 ### 9-1. パソコンとのシリアル通信接続、及びUSB給電   
-   - JP/SW設定は ```5.f. USB通信&給電(RX用)``` とする 
-   - RX用ボードにPC接続済みUSBを接続    
+   - JP/SW設定は ```5.f. USB通信&給電``` とする 
+   - ZeroCarbonボードB(GWアクセス用)にPC接続済みUSBを接続    
 <br>
 
 <div style="page-break-before:always"></div>
@@ -338,14 +345,14 @@ __※新しいバージョンのものがあるかもしれませんが、0307 �
 > Lr1110Demo -d COM4 34.70210993807373,135.4958717974474,1 34.64588733864984,135.51443499143957,17 Ayyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
 ```
    - ```<COM_PORT>```   
-      RX用ボードが接続されているPCのポート番号   
+      ZeroCarbonボードB(GWアクセス用)が接続されているPCのポート番号   
    - ```<COORDINATES_ASSISTED_LR1110>```   
-      RX用ボードが設置されている場所の 緯度・経度・高度を指定  
+      ZeroCarbonボードB(GWアクセス用)の設置場所(緯度・経度・高度)を指定  
       書式は `緯度,経度,高度`  
       緯度、経度は googleマップ内で右クリックすることで取得可能  
       高度は googleマップからは取得できないため任意の値を指定
    - ```<COORDINATES_EXACT>```   
-      RX用ボードから数10km離れた場所の 緯度・経度・高度を指定  
+      ZeroCarbonボードB(GWアクセス用)から数10km離れた場所(緯度・経度・高度)を指定  
       指定方法は `COORDINATES_ASSISTED_LR1110` と同様
    - ```<MANAGE TOKEN>```   
       ``` 3-3-5``` で取得した MANAGE TOKENを使用    
@@ -366,10 +373,10 @@ Reply3 b'demooglog\r\x00'
 
 <div style="page-break-before:always"></div>
 
-### 10-2. TX用ボードを操作する   
+### 10-2. ZeroCarbonボードA(エッジ用)を操作する   
 - 起動30秒経過後   
 - トリガーSWを押下する   
-   TX用ボード、RX用ボード(パソコン)、LoRaクラウドでやり取りをおこない、位置推定を算出する   
+   ZeroCarbonボードA(エッジ用)、ZeroCarbonボードB(GWアクセス用)、GW(パソコン)、LoRaクラウドでやり取りをおこない、位置推定を算出する   
    (通信時間は約30秒)   
 
 (例）実行後、以下のログ例が表示される
@@ -576,9 +583,9 @@ Renesasサイトよりダウンロードし、インストールする
 
 <div style="page-break-before:always"></div>
 
-### 12-8. ZeroCarbon RE01のTXボード用 / RXボード用のファームウェアを作成する場合、以下の定義を変更し、Buildする事で生成できる
+### 12-8. ZeroCarbonボードA(エッジ用) / ZeroCarbonボードB(GWアクセス用)のファームウェアを作成する場合、以下の定義を変更し、Buildする事で生成できる
 - 編集するファイルは```ZeroCarbonProject```フォルダ直下の```config_mode.h```
-- TXボード用は以下の設定とする
+- ZeroCarbonボードA(エッジ用)は以下の設定とする
 
    ```c
    #define TRACKER_RX_TX_UPDATE (2)
@@ -586,9 +593,9 @@ Renesasサイトよりダウンロードし、インストールする
    #define SEND_TO_SERVER (0)
    ```
 
-- RXボード用は以下の設定とする
+- ZeroCarbonボードB(GWアクセス用)は以下の設定とする
 
-   ```c
+   ```C
    #define TRACKER_RX_TX_UPDATE (1)
    #define GNSS_ANTENNA_ACTIVE (0)
    #define SEND_TO_SERVER (1)
