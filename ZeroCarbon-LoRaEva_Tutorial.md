@@ -38,12 +38,12 @@
 
 ## 0.システム構成
 
-![システム構成＆動作フロー.png](img/システム構成＆動作フロー.png)
+![system_flow.png](img/system_flow.png)
 
 ##### 0-1. フローチャート  
 ココでは、以下のフローチャートでコード動作を簡易的に説明します。
 
-![簡易フローチャート.png](img/簡易フローチャート.png)
+![SimpleFlow.png](img/SimpleFlow.png)
 
 <br>
 
@@ -249,22 +249,22 @@ __※新しいバージョンのものがあるかもしれませんが、0307 �
 <div style="page-break-before:always"></div>
 
 ## 5.ZeroCarbon LoRaⓇ Evaluation Board ジャンパSW等配置図
-![b_ボードJPSW.png](img/b_ボードJPSW.png)  
+![b_borad_JPSW.png](img/b_borad_JPSW.png)  
 - JPスイッチ設定
-![JPSW_詳細.png](img/JPSW_詳細.png)
+![JPSW_Details.png](img/JPSW_Details.png)
 - 塗りつぶし部分がshort or 1-2接続 or 2-3接続となります 
 - a.エネハベ素子蓄電　設定
-![0a.エネハベ素子蓄電.png](img/0a.エネハベ素子蓄電.png)   
+![0a.eneh.png](img/0a.eneh.png)   
 - b.USB経由高速蓄電　設定
-![0b.USB経由高速蓄電.png](img/0b.USB経由高速蓄電.png)   
+![0b.USBspeed.png](img/0b.USBspeed.png)   
 - c.USB給電　設定
-![0c.USB給電.png](img/0c.USB給電.png)   
+![0c.USBpsupply.png](img/0c.USBpsupply.png)   
 - d.RFP書き込み(RE01書換)＆給電　設定
-![0d.RFP書き込み(RE01書換)＆給電.png](img/0d.RFP書き込み(RE01書換)＆給電.png)   
+![0d.RFPwrite_psupply.png](img/0d.RFPwrite_psupply.png)   
 - e.LR1110 FW書き込み(USB通信)＆給電　設定
-![0e.LR1110 FW書き込み(USB通信)＆給電.png](img/0e.LR111FW書き込み(USB通信)＆給電.png)
+![0e.LR111FWwrite_psupply.png](img/0e.LR111FWwrite_psupply.png)
 - f.USB通信＆給電　設定
-![0f.USB通信＆給電.png](img/0f.USB通信＆給電.png)   
+![0f.USBcom_psupply.png](img/0f.USBcom_psupply.png)
 <br>
 
 <div style="page-break-before:always"></div>
@@ -281,7 +281,7 @@ __※新しいバージョンのものがあるかもしれませんが、0307 �
    - "フラッシュ操作"の"スタート"ボタンを押下   
      ```※エラーとなった場合、ボードのResetボタンを押下直後に"スタート"ボタンを押下```
 
-   <img src="img/RFP書き込み.png" width="70%">
+   <img src="img/RFPwrite.png" width="70%">
 
 <br>
 
@@ -310,7 +310,7 @@ __※新しいバージョンのものがあるかもしれませんが、0307 �
    - "フラッシュ操作"の"スタート"ボタンを押下   
    ```※エラーとなった場合、ボードのResetボタンを押下直後に"スタート"ボタンを押下``` 
 
-   <img src="img/RFP書き込み.png" width="70%">
+   <img src="img/RFPwrite.png" width="70%">
 
 <br>
 
@@ -419,7 +419,7 @@ OS 環境変数 Pathがインストールしたpythonのパスを通していな
    C:\Users\xxxxxxx\AppData\Local\Programs\Python\Python39\
    ※Python3.9系 の場合
 
-   <img src="img/環境変数.png" width="70%">    
+   <img src="img/EnvironmentH.png" width="70%">    
 
 <br>
 
@@ -547,24 +547,24 @@ Renesasサイトよりダウンロードし、インストールする
 - e2studioを起動する
 - ワークスペースディレクトリを指定、起動する
 
-   ![ワークスペース選択.png](img/ワークスペース選択.png)
+   ![ws_select.png](img/ws_select.png)
 
 - ```ログ/使用状況データ収集```は```キャンセル```ボタン押下
 - ```Renesas Welcome to e2studio```は```ようこそ```横の```x```を押下
 
 - プロジェクト・エクスプローラー内の```プロジェクトをインポート```を選択
 
-   <img src="img/プロジェクトをインポート.png" width="65%">
+   <img src="img/PJ_import.png" width="65%">
 
 <div style="page-break-before:always"></div>
 
 - ```一般```の```既存プロジェクトをワークスペースへ```を選択し、```次へ```押下
 
-   <img src="img/インポート.png" width="65%">
+   <img src="img/Import.png" width="65%">
 
 - ```ルート・ディレクトリの選択(T)```の```参照```ボタン押下し、```12-5.章```迄で作成したプロジェクトフォルダを指定し、```終了```ボタン押下
 
-   <img src="img/インポート完了.png" width="55%">
+   <img src="img/ImportComplete.png" width="55%">
 
 <div style="page-break-before:always"></div>
 
@@ -574,7 +574,7 @@ Renesasサイトよりダウンロードし、インストールする
 
 - ウィンドウ右下タグ内の```コンソール```に```Build Finished 0 error, 0 warnings```が表示されればビルド成功
 
-   <img src="img/Build完了.png" width="65%">
+   <img src="img/BuildComplete.png" width="65%">
 
 - ```.hex```ファイルは以下フォルダに生成される
 ```ZeroCarbonProject\HardwareDebug\LR1110_GNSS_256KB_Transceiver.hex```
