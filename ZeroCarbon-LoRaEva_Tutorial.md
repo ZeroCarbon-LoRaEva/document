@@ -605,7 +605,7 @@ Renesasサイトよりダウンロードし、インストールする
 
 ## 13. Renesas Flash Programmer のプロジェクト作成
 
-1. JP/SW設定は `5.e. LR1110 FW書き込み(USB通信)＆給電` とする
+1. JP/SW設定は ```5.d. RFP書き込み(RE01書換)＆給電``` とする
 2. ZeroCarbon LoRaⓇ Evaluation Board をUSBケーブルでPCに接続する
 3. Renesas Flash Programmer の起動
 
