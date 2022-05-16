@@ -455,3 +455,6 @@ OS 環境変数 Pathがインストールしたpythonのパスを通していな
 
 8. 接続結果確認
 
+   <img src="img/FlashProgrammer_init_06.png" width="65%">
+
+<div style="page-break-before:always"></div>
